@@ -1,0 +1,37 @@
+<div
+  class="bg-[#121212] rounded-lg overflow-hidden hover:shadow-lg hover:shadow-blue-400/10 transition-all duration-300 border border-gray-800 h-full flex flex-col"
+>
+  <div class="h-48 w-full relative overflow-hidden">
+    <img
+      [src]="cardData.imageUrl"
+      [alt]="cardData.title"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  <div class="p-6 space-y-4 flex-grow flex flex-col">
+    <div class="flex justify-between items-center">
+      <span class="text-xs px-3 py-1 bg-blue-400/10 text-blue-400 rounded-full">
+        {{ cardData.category }}
+      </span>
+      <div class="flex items-center text-gray-400 text-sm">
+        <app-svg-clock class="mr-1"></app-svg-clock>
+        <span>{{ cardData.readTime }}</span>
+      </div>
+    </div>
+    <h3 class="text-xl font-bold text-white line-clamp-2">
+      {{ cardData.title }}
+    </h3>
+    <p class="text-gray-400 line-clamp-3 flex-grow">{{ cardData.excerpt }}</p>
+    <div class="mt-auto">
+      <a
+        [routerLink]="['/blog', cardData.id]"
+        class="text-blue-400 inline-flex items-center group w-fit"
+      >
+        <span>Read More</span>
+        <app-svg-arrow-right
+          class="ml-0.5 transform transition-transform duration-300 group-hover:translate-x-0.5"
+        ></app-svg-arrow-right>
+      </a>
+    </div>
+  </div>
+</div>
