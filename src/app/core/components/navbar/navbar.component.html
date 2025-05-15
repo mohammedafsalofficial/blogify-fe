@@ -1,0 +1,33 @@
+<header class="h-20 fixed top-0 w-full bg-background-25 backdrop-blur-md z-50">
+  <div class="flex items-center justify-between max-w-[90%] mx-auto h-full">
+    <div class="flex items-center gap-2">
+      <div
+        class="h-8 w-8 rounded-md bg-blue-500 flex items-center justify-center"
+      >
+        <span class="text-black font-bold text-lg">B</span>
+      </div>
+      <h1 class="text-blue-400 text-3xl font-bold">Blogify</h1>
+    </div>
+
+    <nav class="space-x-6 flex">
+      @for (navLink of navLinks; track navLink.id) {
+      <a [routerLink]="navLink.path" class="group">
+        <span>{{ navLink.label }}</span>
+        @if (currentRoute === navLink.path) {
+        <span class="block max-w-full h-[2.3px] bg-blue-400"></span>
+        } @else {
+        <span
+          class="block max-w-0 group-hover:max-w-full transition-all duration-150 h-[2.3px] bg-blue-400"
+        ></span>
+        }
+      </a>
+      }
+    </nav>
+
+    <button
+      class="bg-blue-500 text-white rounded-xl px-6 py-2 font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out"
+    >
+      Sign In
+    </button>
+  </div>
+</header>
