@@ -3,7 +3,8 @@ import { HomeComponent } from './pages/components/home/home.component';
 import { BlogsComponent } from './pages/components/blogs/blogs.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { AuthComponent } from './pages/components/auth/auth.component';
+import { SignupPageComponent } from './pages/components/signup-page/signup-page.component';
+import { LoginPageComponent } from './pages/components/login-page/login-page.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,10 @@ export const routes: Routes = [
   {
     path: 'auth',
     component: AuthLayoutComponent,
-    children: [{ path: 'login', component: AuthComponent }],
+    children: [
+      { path: 'login', component: LoginPageComponent },
+      { path: 'signup', component: SignupPageComponent },
+      { path: '**', redirectTo: 'login' },
+    ],
   },
 ];
