@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { filter } from 'rxjs';
+import { filter, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -23,9 +23,12 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        startWith(this.route)
+      )
       .subscribe((event) => {
-        this.currentRoute = event.urlAfterRedirects;
+        this.currentRoute = event.url;
       });
   }
 }
